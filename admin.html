@@ -192,8 +192,8 @@ th{background:#f8fafc}
       <h2>পণ্য যোগ / পরিবর্তন</h2>
 
       <p class="muted">
-        নতুন পণ্যের ছবি মোবাইলের গ্যালারি থেকে নির্বাচন করতে পারবে।
-        একই পণ্যের জন্য একাধিক ছবি নির্বাচন করা যাবে।
+        প্রতিটি ছবির সরাসরি URL আলাদা লাইনে লিখুন।
+        একটি পণ্যের জন্য যতগুলো ছবি দরকার, ততগুলো URL দিতে পারবেন।
       </p>
 
       <form id="productForm">
@@ -252,10 +252,21 @@ th{background:#f8fafc}
             <input name="colors" placeholder="কালো, নীল, সাদা">
           </div>
 
-          <div class="field">
-            <label>একাধিক ছবি নির্বাচন</label>
-            <input name="images" type="file"
-              accept="image/jpeg,image/png,image/webp" multiple>
+          <!-- শুধু এই অংশে পরিবর্তন করা হয়েছে -->
+
+          <div class="field full">
+            <label>পণ্যের ছবির URL</label>
+
+            <textarea
+              name="images"
+              rows="6"
+              placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg&#10;https://example.com/image3.jpg"
+            ></textarea>
+
+            <p class="muted">
+              প্রতিটি ছবির URL নতুন লাইনে লিখুন।
+              যতগুলো URL দেবেন, সবগুলো সংরক্ষিত হবে।
+            </p>
           </div>
 
           <div class="field full">
@@ -538,6 +549,10 @@ document.querySelectorAll("[data-tab]").forEach(button => {
 function getImages(product) {
   const raw = product.image_urls || product.image_url || "";
 
+  if (Array.isArray(raw)) {
+    return raw.map(url => String(url).trim()).filter(Boolean);
+  }
+
   return String(raw)
     .split(/\n|,/)
     .map(url => url.trim())
@@ -570,8 +585,11 @@ async function loadProducts() {
       <tr>
         <td>
           ${images[0]
-            ? `<img class="thumb" src="${escapeHTML(images[0])}" alt="">`
+            ? `<img class="thumb" src="${escapeHTML(images[0])}" alt="পণ্যের ছবি">`
             : "—"}
+          ${images.length > 1
+            ? `<br><span class="muted">আরও ${images.length - 1}টি ছবি</span>`
+            : ""}
         </td>
 
         <td>${escapeHTML(product.title || product.name)}</td>
@@ -625,6 +643,9 @@ function editProduct(product) {
   form.elements.colors.value = product.colors || "";
   form.elements.description.value = product.description || "";
 
+  /* আগের সব ছবির URL এডিট বক্সে দেখানো হবে */
+  form.elements.images.value = getImages(product).join("\n");
+
   form.elements.active.checked = product.active !== false;
   form.elements.is_featured.checked = !!product.is_featured;
   form.elements.is_offer.checked = !!product.is_offer;
@@ -649,7 +670,7 @@ $("clearProduct").addEventListener("click", () => {
 });
 
 
-/* Storage-এ ছবি আপলোড */
+/* Storage-এ ছবি আপলোড: লোগো ও ব্যানারের জন্য আগের মতোই থাকবে */
 
 async function uploadImages(files, folder) {
   const urls = [];
@@ -707,17 +728,17 @@ $("productForm").addEventListener("submit", async event => {
       ? products.find(item => String(item.id) === String(id))
       : null;
 
-    const selectedFiles = [...form.elements.images.files];
+    /*
+      নতুন পণ্য হলে URL বক্সের সব ছবি নেওয়া হবে।
+      এডিটের সময় URL বক্সে থাকা ছবিগুলোই সেভ হবে।
+    */
 
-    const newImages = selectedFiles.length
-      ? await uploadImages(selectedFiles, "products")
-      : [];
+    const imageText = String(fd.get("images") || "");
 
-    const previousImages = existing
-      ? getImages(existing)
-      : [];
-
-    const allImages = [...previousImages, ...newImages];
+    const allImages = imageText
+      .split(/\n|,/)
+      .map(url => url.trim())
+      .filter(Boolean);
 
     const payload = {
       title: String(fd.get("title")).trim(),
