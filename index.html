@@ -1,113 +1,877 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#087f5b">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>সততা সপ | অনলাইন শপ</title>
+
 <style>
-:root{--brand:#087f5b;--brand2:#065f46;--ink:#17211d;--muted:#66736d;--bg:#f5f8f6;--card:#fff;--line:#e0e8e3;--danger:#b42318}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;background:var(--brand);color:#fff;padding:11px 15px;font-weight:700}button:disabled{opacity:.55;cursor:not-allowed}.secondary{background:#e8f3ed;color:var(--brand2)}.wrap{max-width:1150px;margin:auto;padding:16px}.top{background:#fff;border-bottom:1px solid var(--line)}.head{display:flex;align-items:center;gap:14px;max-width:1150px;margin:auto;padding:14px 16px}.brandname{font-size:1.35rem;font-weight:850}.muted{color:var(--muted);font-size:.92rem}.search{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}.productImg{width:100%;aspect-ratio:1/1;object-fit:cover;background:#edf2ee}.pbody{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}.pname{font-weight:750}.price{font-weight:850;color:var(--brand2)}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px;margin:16px 0}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:650;font-size:.93rem}.field input,.field select,.field textarea{width:100%;border:1px solid #cfdad3;border-radius:9px;padding:11px;background:#fff}.notice{padding:12px;border-radius:10px;background:#fff8df;color:#704f00;font-size:.92rem}.success{background:#e6f7ec;color:#17643a}.error{background:#ffeded;color:#8c1d18}.footer{text-align:center;color:var(--muted);padding:28px 10px}.empty{padding:30px;text-align:center;color:var(--muted)}@media(max-width:600px){.formgrid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#f5f7f8;
+  color:#222;
+}
+
+header{
+  background:#087f5b;
+  color:white;
+  padding:16px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:27px;
+}
+
+header p{
+  margin:6px 0 0;
+}
+
+.container{
+  width:95%;
+  max-width:1100px;
+  margin:auto;
+}
+
+.search{
+  width:100%;
+  padding:13px;
+  margin:15px 0;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+}
+
+.banner{
+  background:linear-gradient(120deg,#075e45,#13a779);
+  color:white;
+  padding:28px 18px;
+  border-radius:14px;
+  margin:10px 0 18px;
+}
+
+.banner h2{
+  margin:0 0 8px;
+}
+
+.categories{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 0 18px;
+}
+
+.category{
+  flex-shrink:0;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:25px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+
+.category.active{
+  background:#087f5b;
+  color:white;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+
+.product{
+  background:white;
+  border-radius:13px;
+  overflow:hidden;
+  border:1px solid #eee;
+}
+
+.product img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#eee;
+}
+
+.product-info{
+  padding:12px;
+}
+
+.product h3{
+  margin:0 0 8px;
+  font-size:17px;
+}
+
+.price{
+  color:#087f5b;
+  font-size:19px;
+  font-weight:bold;
+  margin:8px 0;
+}
+
+.old-price{
+  text-decoration:line-through;
+  color:#888;
+  font-size:13px;
+  margin-left:5px;
+}
+
+button{
+  cursor:pointer;
+}
+
+.order-btn{
+  background:#087f5b;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:12px;
+  width:100%;
+  font-weight:bold;
+}
+
+.order-btn:disabled{
+  background:#999;
+  cursor:not-allowed;
+}
+
+.support{
+  margin:25px 0;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.support a{
+  padding:11px 14px;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:9px;
+  color:#087f5b;
+  text-decoration:none;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:#075e45;
+  color:white;
+  margin-top:25px;
+}
+
+dialog{
+  width:94%;
+  max-width:600px;
+  max-height:90vh;
+  overflow:auto;
+  border:0;
+  border-radius:14px;
+  padding:20px;
+}
+
+dialog::backdrop{
+  background:#0008;
+}
+
+dialog h2{
+  margin-top:0;
+}
+
+.form-group{
+  margin-bottom:12px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:5px;
+  font-size:14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.form-group textarea{
+  min-height:75px;
+}
+
+.close-btn{
+  background:#eee;
+  color:#222;
+  border:0;
+  padding:10px 14px;
+  border-radius:8px;
+}
+
+.message{
+  margin-top:12px;
+  color:#087f5b;
+  overflow-wrap:anywhere;
+}
+
+@media(max-width:760px){
+  .products{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+
+  header h1{
+    font-size:23px;
+  }
+}
 </style>
 </head>
+
 <body>
-<header class="top"><div class="head">
-<div style="flex:1"><div class="brandname" id="storeName">সততা সপ</div><div class="muted">বিশ্বস্ত অনলাইন শপিং</div></div>
-</div></header>
-<main class="wrap">
-<div class="bar"><input class="search" id="search" placeholder="পণ্যের নাম লিখে খুঁজুন..."></div>
-<section><h2>আমাদের পণ্য</h2><div id="productGrid" class="grid"><div class="empty">পণ্য লোড হচ্ছে...</div></div></section>
 
-<section class="panel" id="checkout">
-<h2>অর্ডার ফর্ম</h2>
-<div id="selectedProduct" class="notice">অর্ডার করতে পণ্যের কার্ডে “অর্ডার করুন” চাপুন।</div>
-<form id="orderForm">
-<div class="formgrid" style="margin-top:14px">
-<div class="field"><label>আপনার নাম *</label><input id="customerName" required maxlength="100"></div>
-<div class="field"><label>মোবাইল নম্বর *</label><input id="customerPhone" required maxlength="20" placeholder="01XXXXXXXXX"></div>
-<div class="field full"><label>সম্পূর্ণ ঠিকানা *</label><textarea id="customerAddress" required maxlength="500"></textarea></div>
-<div class="field full"><button id="submitOrder" type="submit">অর্ডার নিশ্চিত করুন</button><div id="orderMessage" aria-live="polite"></div></div>
-</div>
-</form>
-</section>
+<header>
+  <h1 id="shopName">সততা সপ</h1>
+  <p>বিশ্বস্ত অনলাইন শপিং</p>
+</header>
+
+<main class="container">
+
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="আপনার পছন্দের পণ্য খুঁজুন..."
+  >
+
+  <section class="banner">
+    <h2 id="bannerTitle">সততা সপে স্বাগতম</h2>
+    <p id="bannerText">আপনার পছন্দের পণ্য অর্ডার করুন সহজেই।</p>
+  </section>
+
+  <div id="categories" class="categories"></div>
+
+  <h2>আমাদের পণ্য</h2>
+
+  <section id="products" class="products">
+    <p>পণ্য লোড হচ্ছে...</p>
+  </section>
+
+  <h2>যোগাযোগ ও সাপোর্ট</h2>
+  <div id="support" class="support"></div>
+
+  <h2>অর্ডার ট্র্যাকিং</h2>
+
+  <div class="form-group">
+    <label>আপনার অর্ডার আইডি</label>
+    <input id="trackId" type="number" placeholder="অর্ডার আইডি লিখুন">
+  </div>
+
+  <button class="order-btn" id="trackButton">
+    অর্ডারের অবস্থা দেখুন
+  </button>
+
+  <p id="trackResult" class="message"></p>
+
 </main>
-<footer class="footer">© সততা সপ। সর্বস্বত্ব সংরক্ষিত।</footer>
 
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+<footer>
+  © <span id="year"></span>
+  <span id="footerName">সততা সপ</span>
+  | ধন্যবাদ আমাদের সঙ্গে থাকার জন্য।
+</footer>
 
-const SUPABASE_URL = 'https://otxsvcrahrhsnfpvtimx.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_MpV2AqwE_RcXzq8mzBhwcw_yTKkvnEA';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let products = [], chosenProduct = null;
+<!-- অর্ডার ফর্ম -->
+
+<dialog id="orderDialog">
+
+  <h2 id="orderHeading">অর্ডার করুন</h2>
+
+  <form id="orderForm">
+
+    <div class="form-group">
+      <label>আপনার নাম *</label>
+      <input name="customer_name" required maxlength="120">
+    </div>
+
+    <div class="form-group">
+      <label>মোবাইল নম্বর *</label>
+      <input name="customer_phone" required
+             inputmode="tel" maxlength="30">
+    </div>
+
+    <div class="form-group">
+      <label>বিকল্প মোবাইল নম্বর</label>
+      <input name="customer_alt_phone" inputmode="tel">
+    </div>
+
+    <div class="form-group">
+      <label>গ্রাম / এলাকা *</label>
+      <input name="area" required>
+    </div>
+
+    <div class="form-group">
+      <label>থানা / উপজেলা *</label>
+      <input name="thana" required>
+    </div>
+
+    <div class="form-group">
+      <label>জেলা *</label>
+      <input name="district" required>
+    </div>
+
+    <div class="form-group">
+      <label>পার্সেল গ্রহণের ঠিকানা / পয়েন্ট</label>
+      <input name="parcel_point">
+    </div>
+
+    <div class="form-group">
+      <label>সাইজ</label>
+      <input name="size" placeholder="প্রযোজ্য হলে">
+    </div>
+
+    <div class="form-group">
+      <label>রং</label>
+      <input name="color" placeholder="প্রযোজ্য হলে">
+    </div>
+
+    <div class="form-group">
+      <label>পরিমাণ *</label>
+      <input name="quantity" id="quantity"
+             type="number" min="1" max="99"
+             value="1" required>
+    </div>
+
+    <div class="form-group">
+      <label>ডেলিভারি এলাকা *</label>
+
+      <select name="delivery_area" id="deliveryArea">
+        <option value="ঢাকা সিটি">ঢাকা সিটি — ৳৭০</option>
+        <option value="সাব-ঢাকা">সাব-ঢাকা — ৳১০০</option>
+        <option value="ঢাকার বাইরে">ঢাকার বাইরে — ৳১২০</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>পেমেন্ট পদ্ধতি *</label>
+
+      <select name="payment_method" id="paymentMethod">
+        <option value="COD">ক্যাশ অন ডেলিভারি</option>
+        <option value="bKash">বিকাশ — ম্যানুয়াল পেমেন্ট</option>
+        <option value="Nagad">নগদ — ম্যানুয়াল পেমেন্ট</option>
+      </select>
+    </div>
+
+    <div id="manualPayment" hidden>
+      <div class="form-group">
+        <label>যে নম্বরে পেমেন্ট করেছেন</label>
+        <input name="payment_number">
+      </div>
+
+      <div class="form-group">
+        <label>ট্রানজ্যাকশন আইডি (TrxID)</label>
+        <input name="transaction_id">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>অগ্রিম পেমেন্ট</label>
+      <select name="advance_payment">
+        <option value="না">না</option>
+        <option value="হ্যাঁ">হ্যাঁ</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>অতিরিক্ত মন্তব্য</label>
+      <textarea name="notes"></textarea>
+    </div>
+
+    <div class="form-group">
+      <strong id="totalPrice">মোট: ৳০</strong>
+    </div>
+
+    <button type="submit" id="submitOrder" class="order-btn">
+      অর্ডার নিশ্চিত করুন
+    </button>
+
+    <p id="orderMessage" class="message" role="status"></p>
+
+    <button type="button" id="closeDialog" class="close-btn">
+      বন্ধ করুন
+    </button>
+
+  </form>
+
+</dialog>
+
+
+<!-- Supabase সংযোগ -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL =
+  "https://otxsvcrahrhsnfpvtimx.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "sb_publishable_MpV2AqwE_RcXzq8mzBhwcw_yTKkvnEA";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
 const $ = id => document.getElementById(id);
-const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const money = n => "৳" + Number(n || 0).toLocaleString("bn-BD");
 
-function showMessage(text, type="notice") {
-  $("orderMessageclassName").className = type;
-  $("orderMessage").textContent = text;
-}
+const categories = [
+  "সব পণ্য",
+  "ছেলেদের পোশাক",
+  "মেয়েদের পোশাক",
+  "বেবি কালেকশন",
+  "কাপড় ও কম্বো",
+  "গৃহস্থালি সামগ্রী",
+  "ব্যাগ কালেকশন",
+  "জুতা কালেকশন",
+  "ইলেকট্রিক ও গ্যাজেট",
+  "জুয়েলারি ও এক্সেসরিজ",
+  "ঘড়ি ও ফ্যাশন",
+  "বিউটি",
+  "কিচেন",
+  "হোম ডেকর",
+  "অফার",
+  "অন্যান্য"
+];
 
-async function loadProducts() {
-  const { data, error } = await supabase.from('products').select('*').order('id', { ascending: false });
-  if (error) { console.error(error); return; }
-  products = data || [];
-  renderProducts();
-}
+let products = [];
+let selectedCategory = "সব পণ্য";
+let selectedProduct = null;
 
-function renderProducts() {
-  const query = $("search").value.trim().toLowerCase();
-  const list = products.filter(p => (`${p.title || ""} ${p.description || ""}`).toLowerCase().includes(query));
-  const host = $("productGrid");
-  if (!list.length) { host.innerHTML = '<div class="empty">কোনো পণ্য পাওয়া যায়নি।</div>'; return; }
-  host.innerHTML = "";
-  list.forEach(p => {
-    const card = document.createElement("article");
-    card.className = "card";
-    const img = p.image_url || "";
-    card.innerHTML = `<img class="productImg" loading="lazy" src="${escapeHtml(img || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%23edf2ee%22/%3E%3C/svg%3E')}"><div class="pbody"><div class="pname">${escapeHtml(p.title)}</div><div class="price">${money(p.price)}</div><button>অর্ডার করুন</button></div>`;
-    card.querySelector("button").onclick = () => {
-      chosenProduct = p;
-      $("selectedProduct").textContent = `নির্বাচিত পণ্য: ${p.title} — ${money(p.price)}`;
-      $("checkout").scrollIntoView({behavior:"smooth", block:"start"});
-    };
-    host.append(card);
+const escapeHTML = value =>
+  String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[char]));
+
+const money = amount =>
+  "৳" + Number(amount || 0).toLocaleString("bn-BD");
+
+
+/* ক্যাটাগরি তৈরি */
+
+function renderCategories() {
+  $("categories").innerHTML = categories.map(category => `
+    <button
+      class="category ${selectedCategory === category ? "active" : ""}"
+      data-category="${escapeHTML(category)}">
+      ${escapeHTML(category)}
+    </button>
+  `).join("");
+
+  document.querySelectorAll("[data-category]").forEach(button => {
+    button.addEventListener("click", () => {
+      selectedCategory = button.dataset.category;
+      renderCategories();
+      renderProducts();
+    });
   });
 }
 
+
+/* পণ্য লোড */
+
+async function loadProducts() {
+  const { data, error } = await db
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+
+    $("products").innerHTML =
+      "<p>পণ্য লোড করা যায়নি। Supabase-এর products টেবিল ও SELECT policy পরীক্ষা করুন।</p>";
+
+    return;
+  }
+
+  products = (data || []).filter(product =>
+    product.active !== false
+  );
+
+  renderProducts();
+}
+
+
+/* পণ্যের ছবি */
+
+function getProductImage(product) {
+  if (product.image_url) {
+    return product.image_url;
+  }
+
+  if (product.image_urls) {
+    return product.image_urls.split(/\n|,/)[0].trim();
+  }
+
+  return "https://placehold.co/500x500?text=Satata+Shop";
+}
+
+
+/* পণ্য দেখানো */
+
+function renderProducts() {
+  const query = $("search").value.trim().toLowerCase();
+
+  const filtered = products.filter(product => {
+    const name = product.title || product.name || "";
+    const category = product.category || "";
+
+    const matchesCategory =
+      selectedCategory === "সব পণ্য" ||
+      category === selectedCategory;
+
+    const matchesSearch =
+      (name + " " + category + " " +
+       (product.description || "")).toLowerCase().includes(query);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (!filtered.length) {
+    $("products").innerHTML =
+      "<p>এখনো কোনো পণ্য নেই অথবা আপনার খোঁজের পণ্যটি পাওয়া যায়নি।</p>";
+    return;
+  }
+
+  $("products").innerHTML = filtered.map(product => {
+    const name = product.title || product.name || "পণ্য";
+    const price = Number(product.price || 0);
+    const oldPrice = Number(product.original_price || 0);
+    const soldOut =
+      product.stock !== undefined &&
+      Number(product.stock) <= 0;
+
+    return `
+      <article class="product">
+        <img
+          src="${escapeHTML(getProductImage(product))}"
+          alt="${escapeHTML(name)}"
+          loading="lazy">
+
+        <div class="product-info">
+          <h3>${escapeHTML(name)}</h3>
+
+          <div class="price">
+            ${money(price)}
+            ${oldPrice > price
+              ? `<span class="old-price">${money(oldPrice)}</span>`
+              : ""}
+          </div>
+
+          <p>${escapeHTML(product.description || "")}</p>
+
+          <button
+            class="order-btn"
+            data-order="${escapeHTML(product.id)}"
+            ${soldOut ? "disabled" : ""}>
+            ${soldOut ? "স্টক শেষ" : "অর্ডার করুন"}
+          </button>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  document.querySelectorAll("[data-order]").forEach(button => {
+    button.addEventListener("click", () => {
+      const product = products.find(
+        item => String(item.id) === button.dataset.order
+      );
+
+      if (product) openOrder(product);
+    });
+  });
+}
+
+
+/* সাইট সেটিংস */
+
+async function loadSettings() {
+  const { data, error } = await db
+    .from("site_settings")
+    .select("*")
+    .eq("id", 1)
+    .maybeSingle();
+
+  if (error) {
+    console.warn("সাইট সেটিংস পাওয়া যায়নি:", error.message);
+    return;
+  }
+
+  if (!data) return;
+
+  $("shopName").textContent = data.site_name || "সততা সপ";
+  $("footerName").textContent = data.site_name || "সততা সপ";
+
+  $("bannerTitle").textContent =
+    data.banner_title || "সততা সপে স্বাগতম";
+
+  $("bannerText").textContent =
+    data.banner_text || "আপনার পছন্দের পণ্য অর্ডার করুন সহজেই।";
+
+  const supportLinks = [
+    ["WhatsApp", data.whatsapp_url],
+    ["Telegram", data.telegram_url],
+    ["IMO", data.imo_url],
+    ["Facebook", data.facebook_url]
+  ];
+
+  $("support").innerHTML = supportLinks
+    .filter(item => item[1])
+    .map(item => `
+      <a href="${escapeHTML(item[1])}"
+         target="_blank"
+         rel="noopener noreferrer">
+        ${escapeHTML(item[0])} সাপোর্ট
+      </a>
+    `).join("");
+}
+
+
+/* ডেলিভারি চার্জ */
+
+function getDeliveryCharge() {
+  const area = $("deliveryArea").value;
+
+  if (area === "ঢাকা সিটি") return 70;
+  if (area === "সাব-ঢাকা") return 100;
+
+  return 120;
+}
+
+
+/* মোট দাম হিসাব */
+
+function updateTotal() {
+  if (!selectedProduct) return;
+
+  const quantity = Math.max(
+    1,
+    Number($("quantity").value || 1)
+  );
+
+  const productPrice = Number(selectedProduct.price || 0);
+  const delivery = getDeliveryCharge();
+
+  const total = productPrice * quantity + delivery;
+
+  $("totalPrice").textContent =
+    `পণ্য: ${money(productPrice * quantity)} + ` +
+    `ডেলিভারি: ${money(delivery)} = মোট ${money(total)}`;
+}
+
+
+/* অর্ডার ফর্ম খোলা */
+
+function openOrder(product) {
+  selectedProduct = product;
+
+  $("orderForm").reset();
+
+  $("quantity").value = 1;
+
+  $("orderHeading").textContent =
+    (product.title || product.name || "পণ্য") +
+    " — অর্ডার করুন";
+
+  $("orderMessage").textContent = "";
+
+  $("manualPayment").hidden = true;
+
+  $("orderDialog").showModal();
+
+  updateTotal();
+}
+
+
+/* পেমেন্ট পদ্ধতি পরিবর্তন */
+
+$("paymentMethod").addEventListener("change", () => {
+  $("manualPayment").hidden =
+    $("paymentMethod").value === "COD";
+});
+
+$("deliveryArea").addEventListener("change", updateTotal);
+$("quantity").addEventListener("input", updateTotal);
+
 $("search").addEventListener("input", renderProducts);
 
-$("orderForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!chosenProduct) { alert("আগে একটি পণ্য নির্বাচন করুন।"); return; }
-  
-  const button = $("submitOrder"); button.disabled = true; button.textContent = "অর্ডার পাঠানো হচ্ছে...";
+$("closeDialog").addEventListener("click", () => {
+  $("orderDialog").close();
+});
+
+
+/* অর্ডার জমা */
+
+$("orderForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!selectedProduct) return;
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  const quantity = Math.max(
+    1,
+    Number(formData.get("quantity") || 1)
+  );
+
+  const productPrice = Number(selectedProduct.price || 0);
+  const delivery = getDeliveryCharge();
+
+  const total = productPrice * quantity + delivery;
+
+  const order = {
+    customer_name: String(
+      formData.get("customer_name") || ""
+    ).trim(),
+
+    customer_phone: String(
+      formData.get("customer_phone") || ""
+    ).trim(),
+
+    customer_alt_phone: String(
+      formData.get("customer_alt_phone") || ""
+    ).trim(),
+
+    customer_address: [
+      formData.get("parcel_point"),
+      formData.get("area"),
+      formData.get("thana"),
+      formData.get("district")
+    ].filter(Boolean).join(", "),
+
+    area: String(formData.get("area") || ""),
+    thana: String(formData.get("thana") || ""),
+    district: String(formData.get("district") || ""),
+    parcel_point: String(formData.get("parcel_point") || ""),
+
+    product_name: String(
+      selectedProduct.title || selectedProduct.name || "পণ্য"
+    ),
+
+    product_id: Number(selectedProduct.id) || null,
+    unit_price: productPrice,
+    quantity: quantity,
+
+    delivery_area: String(formData.get("delivery_area")),
+    delivery_charge: delivery,
+    total_price: total,
+
+    size: String(formData.get("size") || ""),
+    color: String(formData.get("color") || ""),
+
+    payment_method: String(formData.get("payment_method") || "COD"),
+    payment_number: String(formData.get("payment_number") || ""),
+    transaction_id: String(formData.get("transaction_id") || ""),
+
+    advance_payment: String(formData.get("advance_payment") || "না"),
+    notes: String(formData.get("notes") || ""),
+
+    status: "Pending"
+  };
+
+  const submitButton = $("submitOrder");
+
+  submitButton.disabled = true;
+  submitButton.textContent = "অর্ডার পাঠানো হচ্ছে...";
+
   try {
-    const { error } = await supabase.from('orders').insert([{
-      customer_name: $("customerName").value.trim(),
-      customer_phone: $("customerPhone").value.trim(),
-      customer_address: $("customerAddress").value.trim(),
-      product_name: chosenProduct.title,
-      total_price: chosenProduct.price,
-      status: 'Pending'
-    }]);
+    const { data, error } = await db
+      .from("orders")
+      .insert(order)
+      .select("id")
+      .single();
 
     if (error) throw error;
 
-    alert("আপনার অর্ডারটি সফলভাবে সম্পন্ন হয়েছে!");
-    $("orderForm").reset(); chosenProduct = null;
-    $("selectedProduct").textContent = "অর্ডার সফলভাবে জমা হয়েছে।";
-  } catch (err) {
-    console.error(err);
-    alert("অর্ডার পাঠানো যায়নি। আবার চেষ্টা করুন।");
+    $("orderMessage").textContent =
+      `অর্ডার সফল হয়েছে! আপনার অর্ডার আইডি: ${data.id}। ` +
+      "আইডিটি সংরক্ষণ করুন।";
+
+    form.reset();
+
+  } catch (error) {
+    console.error(error);
+
+    $("orderMessage").textContent =
+      "অর্ডার জমা হয়নি। ডেটাবেসের কলাম ও INSERT policy পরীক্ষা করতে হবে।";
+
   } finally {
-    button.disabled = false; button.textContent = "অর্ডার নিশ্চিত করুন";
+    submitButton.disabled = false;
+    submitButton.textContent = "অর্ডার নিশ্চিত করুন";
   }
 });
 
-loadProducts();
+
+/* অর্ডার ট্র্যাকিং */
+
+$("trackButton").addEventListener("click", async () => {
+  const id = $("trackId").value.trim();
+
+  if (!/^\d+$/.test(id)) {
+    $("trackResult").textContent =
+      "সঠিক অর্ডার আইডি লিখুন।";
+    return;
+  }
+
+  $("trackResult").textContent = "খোঁজা হচ্ছে...";
+
+  const { data, error } = await db
+    .from("orders")
+    .select("id,status")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error) {
+    $("trackResult").textContent =
+      "এখন স্ট্যাটাস দেখা যাচ্ছে না। পরে আবার চেষ্টা করুন।";
+    return;
+  }
+
+  $("trackResult").textContent = data
+    ? `অর্ডার #${data.id} — অবস্থা: ${data.status || "Pending"}`
+    : "এই আইডিতে কোনো অর্ডার পাওয়া যায়নি।";
+});
+
+
+/* শুরু */
+
+$("year").textContent = new Date().getFullYear();
+
+async function start() {
+  renderCategories();
+
+  await loadSettings();
+
+  await loadProducts();
+}
+
+start();
 </script>
+
 </body>
 </html>
