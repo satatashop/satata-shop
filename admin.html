@@ -7,13 +7,13 @@
 <title>সততা সপ | Admin Panel</title>
 <style>
 :root{--brand:#087f5b;--brand2:#065f46;--ink:#17211d;--muted:#66736d;--bg:#f4f7f5;--card:#fff;--line:#dfe7e2;--red:#b42318}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}button,input,select,textarea{font:inherit}button{border:0;border-radius:9px;padding:10px 13px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#e9f2ed;color:var(--brand2)}.danger{background:var(--red)}.muted{color:var(--muted);font-size:.9rem}.layout{display:grid;grid-template-columns:235px 1fr;min-height:100vh}.side{background:#fff;border-right:1px solid var(--line);padding:18px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:1.2rem;font-weight:850;margin-bottom:4px}.nav{display:grid;gap:7px;margin-top:24px}.nav button{text-align:left;background:transparent;color:var(--ink)}.nav button.active,.nav button:hover{background:#e5f4eb;color:var(--brand2)}.main{padding:20px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.title{font-size:1.5rem;font-weight:850}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.stat span{display:block;color:var(--muted);font-size:.9rem}.stat strong{font-size:1.6rem}.panel{margin-bottom:16px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:.9rem}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cbd8d0;border-radius:9px;background:#fff}.field textarea{min-height:80px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.hidden{display:none!important}.msg{padding:11px;border-radius:9px;margin:10px 0;background:#e8f5ec;color:#17643a}.err{background:#ffeded;color:#8c1d18}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f5f8f6}.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#fff1c2;font-size:.82rem}.login{max-width:440px;margin:8vh auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}.login h1{margin-top:0}.small{font-size:.83rem}.dangertext{color:var(--red)}@media(max-width:850px){.layout{grid-template-columns:1fr}.side{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line)}.nav{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}.main{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.nav{grid-template-columns:1fr 1fr}.stat,.panel{padding:12px}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}button,input,select,textarea{font:inherit}button{border:0;border-radius:9px;padding:10px 13px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#e9f2ed;color:var(--brand2)}.danger{background:var(--red)}.muted{color:var(--muted);font-size:.9rem}.layout{display:grid;grid-template-columns:235px 1fr;min-height:100vh}.side{background:#fff;border-right:1px solid var(--line);padding:18px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:1.2rem;font-weight:850;margin-bottom:4px}.nav{display:grid;gap:7px;margin-top:24px}.nav button{text-align:left;background:transparent;color:var(--ink);width:100%}.nav button.active,.nav button:hover{background:#e5f4eb;color:var(--brand2)}.main{padding:20px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.title{font-size:1.5rem;font-weight:850}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.stat span{display:block;color:var(--muted);font-size:.9rem}.stat strong{font-size:1.6rem}.panel{margin-bottom:16px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:.9rem}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cbd8d0;border-radius:9px;background:#fff}.field textarea{min-height:80px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.hidden{display:none!important}.msg{padding:11px;border-radius:9px;margin:10px 0;background:#e8f5ec;color:#17643a}.err{background:#ffeded;color:#8c1d18}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f5f8f6}.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#fff1c2;font-size:.82rem}@media(max-width:850px){.layout{grid-template-columns:1fr}.side{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line)}.nav{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}.main{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.nav{grid-template-columns:1fr 1fr}.stat,.panel{padding:12px}}
 </style>
 </head>
 <body>
 <div id="app" class="layout">
 <aside class="side">
-<div class="brand" id="sideStoreName">সততা সপ</div><div class="muted">Admin Control Center</div>
+<div class="brand">সততা সপ</div><div class="muted">Admin Control Center</div>
 <nav class="nav">
 <button data-view="dashboard" class="active">ড্যাশবোর্ড</button>
 <button data-view="products">পণ্য</button>
@@ -22,7 +22,7 @@
 </aside>
 <main class="main">
 <header class="top"><div><div class="title" id="viewTitle">ড্যাশবোর্ড</div><div class="muted">অ্যাডমিন প্যানেল (Supabase)</div></div><button class="secondary" id="refreshButton">রিফ্রেশ</button></header>
-<div id="globalMessage" aria-live="polite"></div>
+<div id="globalMessage" class="hidden" aria-live="polite"></div>
 
 <section class="view" id="view-dashboard">
 <div class="grid">
@@ -63,44 +63,73 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let products = [], orders = [];
 const money = n => "৳" + Number(n || 0).toLocaleString("bn-BD");
 const esc = v => String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function message(text, error=false) { $("globalMessageclassName").className = error ? "msg err" : "msg"; $("globalMessage").textContent = text; }
+const $ = id => document.getElementById(id);
+
+function message(text, error=false) { 
+  const msgEl = $("globalMessage");
+  msgEl.className = error ? "msg err" : "msg"; 
+  msgEl.textContent = text; 
+}
 
 function showView(name) {
   document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
-  $("view-"+name).classList.remove("hidden");
-  document.querySelectorAll(".nav button").forEach(b => b.classList.toggle("active", b.dataset.view === name));
-  const titles = {dashboard:"ড্যাশবোর্ড",products:"পণ্য",orders:"অর্ডার ও পেমেন্ট"};
+  const targetView = $("view-"+name);
+  if(targetView) targetView.classList.remove("hidden");
+  
+  document.querySelectorAll(".nav button").forEach(b => {
+    b.classList.toggle("active", b.dataset.view === name);
+  });
+  
+  const titles = {dashboard:"ড্যাশবোর্ড", products:"পণ্য", orders:"অর্ডার ও পেমেন্ট"};
   $("viewTitle").textContent = titles[name] || "Admin";
 }
-document.querySelectorAll(".nav button").forEach(b => b.addEventListener("click", () => showView(b.dataset.view)));
+
+document.querySelectorAll(".nav button").forEach(b => {
+  b.addEventListener("click", () => showView(b.dataset.view));
+});
 
 async function loadAll() {
-  const [{ data: p }, { data: o }] = await Promise.all([
-    supabase.from('products').select('*').order('id', { ascending: false }),
-    supabase.from('orders').select('*').order('id', { ascending: false })
-  ]);
-  products = p || [];
-  orders = o || [];
-  
-  $("statOrders").textContent = orders.length.toLocaleString("bn-BD");
-  $("statPending").textContent = orders.filter(o => o.status === "Pending").length.toLocaleString("bn-BD");
-  $("statProducts").textContent = products.length.toLocaleString("bn-BD");
-  
-  renderProducts(); renderOrders(); renderRecentOrders();
+  try {
+    const [{ data: p }, { data: o }] = await Promise.all([
+      supabase.from('products').select('*').order('id', { ascending: false }),
+      supabase.from('orders').select('*').order('id', { ascending: false })
+    ]);
+    products = p || [];
+    orders = o || [];
+    
+    $("statOrders").textContent = orders.length.toLocaleString("bn-BD");
+    $("statPending").textContent = orders.filter(item => item.status === "Pending").length.toLocaleString("bn-BD");
+    $("statProducts").textContent = products.length.toLocaleString("bn-BD");
+    
+    renderProducts(); 
+    renderOrders(); 
+    renderRecentOrders();
+  } catch(err) {
+    console.error(err);
+    message("ডাটা লোড করতে সমস্যা হয়েছে।", true);
+  }
 }
 
 function renderProducts() {
   const host = $("productsTable");
   if (!products.length) { host.textContent = "এখনো কোনো পণ্য নেই।"; return; }
-  host.innerHTML = `<table><thead><tr><th>পণ্য</th><th>মূল্য</th><th>কাজ</th></tr></thead><tbody>${products.map(p=>`<tr><td>${esc(p.title)}<div class="muted small">${esc(p.category\vert{}\vert{}"")}</div></td><td>${money(p.price)}</td><td><button class="secondary" data-edit-product="${p.id}">সম্পাদনা</button> <button class="danger" data-delete-product="${p.id}">মুছুন</button></td></tr>`).join("")}</tbody></table>`;
-  host.querySelectorAll("[data-edit-product]").forEach(b=>b.onclick=()=>editProduct(b.dataset.editProduct));
-  host.querySelectorAll("[data-delete-product]").forEach(b=>b.onclick=()=>removeProduct(b.dataset.deleteProduct));
+  host.innerHTML = `<table><thead><tr><th>পণ্য</th><th>মূল্য</th><th>কাজ</th></tr></thead><tbody>${products.map(p=>`<tr><td>${esc(p.title)}<div class="muted small">${esc(p.category\vert{}\vert{}"")}</div></td><td>${money(p.price)}</td><td><button type="button" class="secondary" data-edit-product="${p.id}">সম্পাদনা</button> <button type="button" class="danger" data-delete-product="${p.id}">মুছুন</button></td></tr>`).join("")}</tbody></table>`;
+  
+  host.querySelectorAll("[data-edit-product]").forEach(b => {
+    b.onclick = () => editProduct(b.dataset.editProduct);
+  });
+  host.querySelectorAll("[data-delete-product]").forEach(b => {
+    b.onclick = () => removeProduct(b.dataset.deleteProduct);
+  });
 }
 
 function renderOrders() {
   const host = $("ordersTable");
-  host.innerHTML = orders.length ? `<table><thead><tr><th>অর্ডার আইডি</th><th>ক্রেতা</th><th>পণ্যের বিবরণ</th><th>মোট</th><th>স্ট্যাটাস</th><th>কাজ</th></tr></thead><tbody>${orders.map(o=>`<tr><td>#${o.id}<br><span class="muted small">${new Date(o.created_at).toLocaleString("bn-BD")}</span></td><td>${esc(o.customer_name)}<br>${esc(o.customer_phone)}<br><span class="muted">${esc(o.customer_address)}</span></td><td>${esc(o.product_name)}</td><td>${money(o.total_price)}</td><td><span class="pill">${esc(o.status)}</span></td><td><button class="secondary" data-complete="${o.id}">সম্পন্ন</button></td></tr>`).join("")}</tbody></table>` : "কোনো অর্ডার নেই।";
-  host.querySelectorAll("[data-complete]").forEach(b=>b.onclick=()=>updateOrderStatus(b.dataset.complete));
+  host.innerHTML = orders.length ? `<table><thead><tr><th>অর্ডার আইডি</th><th>ক্রেতা</th><th>পণ্যের বিবরণ</th><th>মোট</th><th>স্ট্যাটাস</th><th>কাজ</th></tr></thead><tbody>${orders.map(o=>`<tr><td>#${o.id}<br><span class="muted small">${new Date(o.created_at).toLocaleString("bn-BD")}</span></td><td>${esc(o.customer_name)}<br>${esc(o.customer_phone)}<br><span class="muted">${esc(o.customer_address)}</span></td><td>${esc(o.product_name)}</td><td>${money(o.total_price)}</td><td><span class="pill">${esc(o.status)}</span></td><td><button type="button" class="secondary" data-complete="${o.id}">সম্পন্ন</button></td></tr>`).join("")}</tbody></table>` : "কোনো অর্ডার নেই।";
+  
+  host.querySelectorAll("[data-complete]").forEach(b => {
+    b.onclick = () => updateOrderStatus(b.dataset.complete);
+  });
 }
 
 function renderRecentOrders() {
@@ -113,14 +142,25 @@ async function updateOrderStatus(id) {
   loadAll();
 }
 
-function resetProductForm() { $("productForm").reset(); $("productId").value=""; $("productFormTitle").textContent="নতুন পণ্য যোগ করুন"; }
-function editProduct(id) {
-  const p = products.find(x => x.id == id); if(!p) return;
-  $("productId").value = p.id; $("pName").value = p.title \vert{}\vert{} ""; $("pPrice").value = p.price ?? 0;
-  $("pCategory").value = p.category \vert{}\vert{} ""; $("pDescription").value = p.description || "";
-  $("pImage").value = p.image_url || "";
-  $("productFormTitle").textContent = "পণ্য সম্পাদনা"; window.scrollTo({top:0,behavior:"smooth"});
+function resetProductForm() { 
+  $("productForm").reset(); 
+  $("productId").value = ""; 
+  $("productFormTitle").textContent = "নতুন পণ্য যোগ করুন"; 
 }
+
+function editProduct(id) {
+  const p = products.find(x => String(x.id) === String(id)); 
+  if(!p) return;
+  $("productId").value = p.id; 
+  $("pName").value = p.title || ""; 
+  $("pPrice").value = p.price ?? 0;
+  $("pCategory").value = p.category || ""; 
+  $("pDescription").value = p.description || "";
+  $("pImage").value = p.image_url || "";
+  $("productFormTitle").textContent = "পণ্য সম্পাদনা"; 
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
 async function removeProduct(id) {
   if(!confirm("এই পণ্য মুছে ফেলবেন?")) return;
   await supabase.from('products').delete().eq('id', id);
@@ -128,6 +168,7 @@ async function removeProduct(id) {
 }
 
 $("resetProduct").onclick = resetProductForm;
+
 $("productForm").addEventListener("submit", async e => {
   e.preventDefault();
   const id = $("productId").value;
@@ -138,17 +179,19 @@ $("productForm").addEventListener("submit", async e => {
     description: $("pDescription").value.trim(),
     image_url: $("pImage").value.trim()
   };
+  
   if(id) {
     await supabase.from('products').update(data).eq('id', id);
   } else {
     await supabase.from('products').insert([data]);
   }
-  resetProductForm(); loadAll();
+  resetProductForm(); 
+  loadAll();
+  message("পণ্য সফলভাবে সংরক্ষিত হয়েছে।");
 });
 
 $("refreshButton").onclick = () => loadAll();
 loadAll();
-const $ = id => document.getElementById(id);
 </script>
 </body>
 </html>
