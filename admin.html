@@ -1,197 +1,1042 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#087f5b">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>সততা সপ | Admin Panel</title>
+
 <style>
-:root{--brand:#087f5b;--brand2:#065f46;--ink:#17211d;--muted:#66736d;--bg:#f4f7f5;--card:#fff;--line:#dfe7e2;--red:#b42318}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}button,input,select,textarea{font:inherit}button{border:0;border-radius:9px;padding:10px 13px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#e9f2ed;color:var(--brand2)}.danger{background:var(--red)}.muted{color:var(--muted);font-size:.9rem}.layout{display:grid;grid-template-columns:235px 1fr;min-height:100vh}.side{background:#fff;border-right:1px solid var(--line);padding:18px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:1.2rem;font-weight:850;margin-bottom:4px}.nav{display:grid;gap:7px;margin-top:24px}.nav button{text-align:left;background:transparent;color:var(--ink);width:100%}.nav button.active,.nav button:hover{background:#e5f4eb;color:var(--brand2)}.main{padding:20px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.title{font-size:1.5rem;font-weight:850}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.stat span{display:block;color:var(--muted);font-size:.9rem}.stat strong{font-size:1.6rem}.panel{margin-bottom:16px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:.9rem}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cbd8d0;border-radius:9px;background:#fff}.field textarea{min-height:80px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.hidden{display:none!important}.msg{padding:11px;border-radius:9px;margin:10px 0;background:#e8f5ec;color:#17643a}.err{background:#ffeded;color:#8c1d18}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f5f8f6}.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#fff1c2;font-size:.82rem}@media(max-width:850px){.layout{grid-template-columns:1fr}.side{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line)}.nav{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}.main{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.nav{grid-template-columns:1fr 1fr}.stat,.panel{padding:12px}}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#f3f6f8;
+  color:#202b35
+}
+header{
+  background:#075e45;
+  color:white;
+  padding:17px
+}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px
+}
+h1{font-size:22px;margin:0}
+.container{max-width:1200px;margin:auto;padding:15px}
+.card{
+  background:white;
+  border:1px solid #e3e7eb;
+  border-radius:13px;
+  padding:17px;
+  margin:14px 0
+}
+.login{max-width:430px;margin:45px auto}
+label{display:block;font-size:14px;margin-bottom:6px}
+input,select,textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #d0d5dd;
+  border-radius:8px;
+  font-size:15px;
+  background:white
+}
+textarea{min-height:85px}
+.field{margin-bottom:13px}
+button{
+  border:0;
+  border-radius:8px;
+  padding:11px 14px;
+  cursor:pointer;
+  font-weight:bold
+}
+.primary{background:#087f5b;color:white}
+.secondary{background:#e9eef1;color:#344054}
+.danger{background:#b42318;color:white}
+.hidden{display:none!important}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px
+}
+.stat{
+  background:#e7f5ed;
+  border-radius:12px;
+  padding:16px
+}
+.stat span{display:block;color:#475467;font-size:14px}
+.stat strong{
+  display:block;
+  font-size:24px;
+  color:#075e45;
+  margin-top:8px
+}
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin:15px 0
+}
+.tab{
+  flex-shrink:0;
+  background:white;
+  border:1px solid #d0d5dd
+}
+.tab.active{background:#087f5b;color:white}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+.full{grid-column:1/-1}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.table-wrap{overflow:auto}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px
+}
+th,td{
+  text-align:left;
+  padding:11px;
+  border-bottom:1px solid #eaecf0;
+  font-size:14px
+}
+th{background:#f8fafc}
+.thumb{
+  width:48px;height:48px;
+  object-fit:cover;border-radius:7px
+}
+.msg{margin-top:12px;color:#087f5b;overflow-wrap:anywhere}
+.muted{font-size:13px;color:#667085}
+@media(max-width:700px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .form-grid{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  h1{font-size:18px}
+  .container{padding:10px}
+}
 </style>
 </head>
+
 <body>
-<div id="app" class="layout">
-<aside class="side">
-<div class="brand">সততা সপ</div><div class="muted">Admin Control Center</div>
-<nav class="nav">
-<button data-view="dashboard" class="active">ড্যাশবোর্ড</button>
-<button data-view="products">পণ্য</button>
-<button data-view="orders">অর্ডার ও পেমেন্ট</button>
-</nav>
-</aside>
-<main class="main">
-<header class="top"><div><div class="title" id="viewTitle">ড্যাশবোর্ড</div><div class="muted">অ্যাডমিন প্যানেল (Supabase)</div></div><button class="secondary" id="refreshButton">রিফ্রেশ</button></header>
-<div id="globalMessage" class="hidden" aria-live="polite"></div>
 
-<section class="view" id="view-dashboard">
-<div class="grid">
-<div class="stat"><span>মোট অর্ডার</span><strong id="statOrders">0</strong></div>
-<div class="stat"><span>পেমেন্ট যাচাই বাকি</span><strong id="statPending">0</strong></div>
-<div class="stat"><span>পণ্য</span><strong id="statProducts">0</strong></div>
-</div>
-<div class="panel" style="margin-top:16px"><h2>সাম্প্রতিক অর্ডার</h2><div id="recentOrders" class="tablewrap">লোড হচ্ছে...</div></div>
-</section>
+<header>
+  <div class="header-inner">
+    <h1>সততা সপ — Admin Panel</h1>
+    <button id="logoutBtn" class="secondary hidden">লগআউট</button>
+  </div>
+</header>
 
-<section class="view hidden" id="view-products">
-<div class="panel"><h2 id="productFormTitle">নতুন পণ্য যোগ করুন</h2>
-<form id="productForm"><input type="hidden" id="productId">
-<div class="formgrid">
-<div class="field"><label>পণ্যের নাম *</label><input id="pName" required maxlength="150"></div>
-<div class="field"><label>মূল্য (টাকা) *</label><input id="pPrice" type="number" min="0" step="0.01" required></div>
-<div class="field"><label>ক্যাটাগরি</label><input id="pCategory" placeholder="যেমন: General"></div>
-<div class="field full"><label>বিবরণ</label><textarea id="pDescription" maxlength="3000"></textarea></div>
-<div class="field full"><label>ছবির URL</label><input id="pImage" type="url" placeholder="https://..."></div>
-</div>
-<div class="actions"><button type="submit" id="saveProductButton">পণ্য সংরক্ষণ</button><button type="button" id="resetProduct" class="secondary">ফর্ম পরিষ্কার</button></div>
-</form></div>
-<div class="panel"><h2>পণ্যের তালিকা</h2><div id="productsTable" class="tablewrap">লোড হচ্ছে...</div></div>
-</section>
+<main class="container">
 
-<section class="view hidden" id="view-orders">
-<div class="panel"><h2>অর্ডার ও পেমেন্ট যাচাই</h2><div id="ordersTable" class="tablewrap">লোড হচ্ছে...</div></div>
-</section>
-</main></div>
+  <!-- LOGIN -->
+  <section id="loginSection" class="card login">
+    <h2>অ্যাডমিন লগইন</h2>
+    <p class="muted">শুধু অনুমোদিত অ্যাডমিন অ্যাকাউন্ট ব্যবহার করুন।</p>
 
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+    <form id="loginForm">
+      <div class="field">
+        <label>ইমেইল</label>
+        <input name="email" type="email" required autocomplete="username">
+      </div>
 
-const SUPABASE_URL = 'https://otxsvcrahrhsnfpvtimx.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_MpV2AqwE_RcXzq8mzBhwcw_yTKkvnEA';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      <div class="field">
+        <label>পাসওয়ার্ড</label>
+        <input name="password" type="password" required autocomplete="current-password">
+      </div>
 
-let products = [], orders = [];
-const money = n => "৳" + Number(n || 0).toLocaleString("bn-BD");
-const esc = v => String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+      <button class="primary" type="submit">লগইন</button>
+      <p id="loginMessage" class="msg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="hidden">
+
+    <div class="grid">
+      <div class="stat">
+        <span>মোট পণ্য</span>
+        <strong id="productCount">০</strong>
+      </div>
+
+      <div class="stat">
+        <span>মোট অর্ডার</span>
+        <strong id="orderCount">০</strong>
+      </div>
+
+      <div class="stat">
+        <span>পেন্ডিং অর্ডার</span>
+        <strong id="pendingCount">০</strong>
+      </div>
+
+      <div class="stat">
+        <span>সম্পন্ন অর্ডারের বিক্রয়</span>
+        <strong id="salesCount">৳০</strong>
+      </div>
+    </div>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="productsTab">পণ্য</button>
+      <button class="tab" data-tab="ordersTab">অর্ডার</button>
+      <button class="tab" data-tab="settingsTab">ওয়েবসাইট সেটিংস</button>
+    </nav>
+
+    <!-- PRODUCTS -->
+    <section id="productsTab" class="card">
+
+      <h2>পণ্য যোগ / পরিবর্তন</h2>
+
+      <p class="muted">
+        নতুন পণ্যের ছবি মোবাইলের গ্যালারি থেকে নির্বাচন করতে পারবে।
+        একই পণ্যের জন্য একাধিক ছবি নির্বাচন করা যাবে।
+      </p>
+
+      <form id="productForm">
+        <input type="hidden" name="id">
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label>পণ্যের নাম *</label>
+            <input name="title" required maxlength="180">
+          </div>
+
+          <div class="field">
+            <label>ক্যাটাগরি</label>
+            <select name="category">
+              <option>ছেলেদের পোশাক</option>
+              <option>মেয়েদের পোশাক</option>
+              <option>বেবি কালেকশন</option>
+              <option>কাপড় ও কম্বো</option>
+              <option>গৃহস্থালি সামগ্রী</option>
+              <option>ব্যাগ কালেকশন</option>
+              <option>জুতা কালেকশন</option>
+              <option>ইলেকট্রিক ও গ্যাজেট</option>
+              <option>জুয়েলারি ও এক্সেসরিজ</option>
+              <option>ঘড়ি ও ফ্যাশন</option>
+              <option>বিউটি</option>
+              <option>কিচেন</option>
+              <option>হোম ডেকর</option>
+              <option>অফার</option>
+              <option>অন্যান্য</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>বিক্রয় মূল্য (৳) *</label>
+            <input name="price" type="number" min="0" step="0.01" required>
+          </div>
+
+          <div class="field">
+            <label>আগের মূল্য (৳)</label>
+            <input name="original_price" type="number" min="0" step="0.01">
+          </div>
+
+          <div class="field">
+            <label>স্টক</label>
+            <input name="stock" type="number" min="0" value="10">
+          </div>
+
+          <div class="field">
+            <label>সাইজ</label>
+            <input name="sizes" placeholder="S, M, L, XL">
+          </div>
+
+          <div class="field">
+            <label>রং</label>
+            <input name="colors" placeholder="কালো, নীল, সাদা">
+          </div>
+
+          <div class="field">
+            <label>একাধিক ছবি নির্বাচন</label>
+            <input name="images" type="file"
+              accept="image/jpeg,image/png,image/webp" multiple>
+          </div>
+
+          <div class="field full">
+            <label>পণ্যের বিবরণ</label>
+            <textarea name="description"></textarea>
+          </div>
+
+          <div class="field">
+            <label>
+              <input name="active" type="checkbox" checked style="width:auto">
+              ওয়েবসাইটে পণ্য দেখাও
+            </label>
+          </div>
+
+          <div class="field">
+            <label>
+              <input name="is_featured" type="checkbox" style="width:auto">
+              জনপ্রিয় পণ্য
+            </label>
+          </div>
+
+          <div class="field">
+            <label>
+              <input name="is_offer" type="checkbox" style="width:auto">
+              অফার পণ্য
+            </label>
+          </div>
+
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="saveProduct" type="submit">
+            পণ্য সেভ করুন
+          </button>
+
+          <button class="secondary" id="clearProduct" type="button">
+            নতুন পণ্য
+          </button>
+        </div>
+
+        <p id="productMessage" class="msg" role="status"></p>
+      </form>
+
+      <hr>
+
+      <h2>পণ্যের তালিকা</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ছবি</th>
+              <th>নাম</th>
+              <th>দাম</th>
+              <th>স্টক</th>
+              <th>ক্যাটাগরি</th>
+              <th>কাজ</th>
+            </tr>
+          </thead>
+          <tbody id="productRows"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ORDERS -->
+    <section id="ordersTab" class="card hidden">
+
+      <h2>গ্রাহকের অর্ডার</h2>
+
+      <button class="secondary" id="refreshOrders">রিফ্রেশ</button>
+
+      <div class="table-wrap" style="margin-top:12px">
+        <table>
+          <thead>
+            <tr>
+              <th>অর্ডার</th>
+              <th>গ্রাহক</th>
+              <th>পণ্য</th>
+              <th>মোট</th>
+              <th>পেমেন্ট</th>
+              <th>স্ট্যাটাস</th>
+              <th>সেভ</th>
+            </tr>
+          </thead>
+          <tbody id="orderRows"></tbody>
+        </table>
+      </div>
+
+      <p id="ordersMessage" class="msg"></p>
+
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settingsTab" class="card hidden">
+
+      <h2>ওয়েবসাইট সেটিংস</h2>
+
+      <form id="settingsForm">
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label>ওয়েবসাইটের নাম</label>
+            <input name="site_name" value="সততা সপ" required>
+          </div>
+
+          <div class="field">
+            <label>ব্যানারের শিরোনাম</label>
+            <input name="banner_title" value="সততা সপে স্বাগতম">
+          </div>
+
+          <div class="field full">
+            <label>ব্যানারের লেখা</label>
+            <input name="banner_text" value="আপনার পছন্দের পণ্য অর্ডার করুন সহজেই।">
+          </div>
+
+          <div class="field">
+            <label>লোগো আপলোড</label>
+            <input name="logo_file" type="file" accept="image/*">
+          </div>
+
+          <div class="field">
+            <label>ব্যানার ছবি আপলোড</label>
+            <input name="banner_file" type="file" accept="image/*">
+          </div>
+
+          <div class="field">
+            <label>WhatsApp লিংক</label>
+            <input name="whatsapp_url" type="url" placeholder="https://wa.me/...">
+          </div>
+
+          <div class="field">
+            <label>Telegram লিংক</label>
+            <input name="telegram_url" type="url" placeholder="https://t.me/...">
+          </div>
+
+          <div class="field">
+            <label>IMO লিংক</label>
+            <input name="imo_url" type="url">
+          </div>
+
+          <div class="field">
+            <label>Facebook লিংক</label>
+            <input name="facebook_url" type="url">
+          </div>
+
+        </div>
+
+        <button class="primary" type="submit" id="saveSettings">
+          সেটিংস সেভ করুন
+        </button>
+
+        <p id="settingsMessage" class="msg" role="status"></p>
+
+      </form>
+    </section>
+
+  </section>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL =
+  "https://otxsvcrahrhsnfpvtimx.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "sb_publishable_MpV2AqwE_RcXzq8mzBhwcw_yTKkvnEA";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
 const $ = id => document.getElementById(id);
 
-function message(text, error=false) { 
-  const msgEl = $("globalMessage");
-  msgEl.className = error ? "msg err" : "msg"; 
-  msgEl.textContent = text; 
+const escapeHTML = value =>
+  String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+
+const money = amount =>
+  "৳" + Number(amount || 0).toLocaleString("bn-BD");
+
+let products = [];
+let orders = [];
+let settings = {};
+
+
+/* অনুমোদিত অ্যাডমিন যাচাই */
+
+async function checkAdmin(user) {
+  const { data, error } = await db
+    .from("admin_users")
+    .select("id")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(
+      "অ্যাডমিন যাচাই করা যায়নি। admin_users টেবিলের RLS policy পরীক্ষা করুন।"
+    );
+  }
+
+  if (!data) {
+    await db.auth.signOut();
+    throw new Error(
+      "এই অ্যাকাউন্ট অ্যাডমিন হিসেবে অনুমোদিত নয়।"
+    );
+  }
 }
 
-function showView(name) {
-  document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
-  const targetView = $("view-"+name);
-  if(targetView) targetView.classList.remove("hidden");
-  
-  document.querySelectorAll(".nav button").forEach(b => {
-    b.classList.toggle("active", b.dataset.view === name);
-  });
-  
-  const titles = {dashboard:"ড্যাশবোর্ড", products:"পণ্য", orders:"অর্ডার ও পেমেন্ট"};
-  $("viewTitle").textContent = titles[name] || "Admin";
-}
 
-document.querySelectorAll(".nav button").forEach(b => {
-  b.addEventListener("click", () => showView(b.dataset.view));
-});
+/* লগইন */
 
-async function loadAll() {
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const form = new FormData(event.currentTarget);
+
+  $("loginMessage").textContent = "লগইন হচ্ছে...";
+
   try {
-    const [{ data: p }, { data: o }] = await Promise.all([
-      supabase.from('products').select('*').order('id', { ascending: false }),
-      supabase.from('orders').select('*').order('id', { ascending: false })
+    const { data, error } = await db.auth.signInWithPassword({
+      email: String(form.get("email")).trim(),
+      password: String(form.get("password"))
+    });
+
+    if (error) throw error;
+
+    await checkAdmin(data.user);
+
+    $("loginSection").classList.add("hidden");
+    $("dashboard").classList.remove("hidden");
+    $("logoutBtn").classList.remove("hidden");
+
+    $("loginMessage").textContent = "";
+
+    await Promise.all([
+      loadProducts(),
+      loadOrders(),
+      loadSettings()
     ]);
-    products = p || [];
-    orders = o || [];
-    
-    $("statOrders").textContent = orders.length.toLocaleString("bn-BD");
-    $("statPending").textContent = orders.filter(item => item.status === "Pending").length.toLocaleString("bn-BD");
-    $("statProducts").textContent = products.length.toLocaleString("bn-BD");
-    
-    renderProducts(); 
-    renderOrders(); 
-    renderRecentOrders();
-  } catch(err) {
-    console.error(err);
-    message("ডাটা লোড করতে সমস্যা হয়েছে।", true);
+
+  } catch (error) {
+    console.error(error);
+    $("loginMessage").textContent =
+      error.message || "লগইন করা যায়নি।";
   }
-}
-
-function renderProducts() {
-  const host = $("productsTable");
-  if (!products.length) { host.textContent = "এখনো কোনো পণ্য নেই।"; return; }
-  host.innerHTML = `<table><thead><tr><th>পণ্য</th><th>মূল্য</th><th>কাজ</th></tr></thead><tbody>${products.map(p=>`<tr><td>${esc(p.title)}<div class="muted small">${esc(p.category\vert{}\vert{}"")}</div></td><td>${money(p.price)}</td><td><button type="button" class="secondary" data-edit-product="${p.id}">সম্পাদনা</button> <button type="button" class="danger" data-delete-product="${p.id}">মুছুন</button></td></tr>`).join("")}</tbody></table>`;
-  
-  host.querySelectorAll("[data-edit-product]").forEach(b => {
-    b.onclick = () => editProduct(b.dataset.editProduct);
-  });
-  host.querySelectorAll("[data-delete-product]").forEach(b => {
-    b.onclick = () => removeProduct(b.dataset.deleteProduct);
-  });
-}
-
-function renderOrders() {
-  const host = $("ordersTable");
-  host.innerHTML = orders.length ? `<table><thead><tr><th>অর্ডার আইডি</th><th>ক্রেতা</th><th>পণ্যের বিবরণ</th><th>মোট</th><th>স্ট্যাটাস</th><th>কাজ</th></tr></thead><tbody>${orders.map(o=>`<tr><td>#${o.id}<br><span class="muted small">${new Date(o.created_at).toLocaleString("bn-BD")}</span></td><td>${esc(o.customer_name)}<br>${esc(o.customer_phone)}<br><span class="muted">${esc(o.customer_address)}</span></td><td>${esc(o.product_name)}</td><td>${money(o.total_price)}</td><td><span class="pill">${esc(o.status)}</span></td><td><button type="button" class="secondary" data-complete="${o.id}">সম্পন্ন</button></td></tr>`).join("")}</tbody></table>` : "কোনো অর্ডার নেই।";
-  
-  host.querySelectorAll("[data-complete]").forEach(b => {
-    b.onclick = () => updateOrderStatus(b.dataset.complete);
-  });
-}
-
-function renderRecentOrders() {
-  const host = $("recentOrders"), recent = orders.slice(0, 5);
-  host.innerHTML = recent.length ? `<table><thead><tr><th>অর্ডার</th><th>ক্রেতা</th><th>মোট</th></tr></thead><tbody>${recent.map(o=>`<tr><td>#${o.id}</td><td>${esc(o.customer_name)}</td><td>${money(o.total_price)}</td></tr>`).join("")}</tbody></table>` : "কোনো অর্ডার নেই।";
-}
-
-async function updateOrderStatus(id) {
-  await supabase.from('orders').update({ status: 'Completed' }).eq('id', id);
-  loadAll();
-}
-
-function resetProductForm() { 
-  $("productForm").reset(); 
-  $("productId").value = ""; 
-  $("productFormTitle").textContent = "নতুন পণ্য যোগ করুন"; 
-}
-
-function editProduct(id) {
-  const p = products.find(x => String(x.id) === String(id)); 
-  if(!p) return;
-  $("productId").value = p.id; 
-  $("pName").value = p.title || ""; 
-  $("pPrice").value = p.price ?? 0;
-  $("pCategory").value = p.category || ""; 
-  $("pDescription").value = p.description || "";
-  $("pImage").value = p.image_url || "";
-  $("productFormTitle").textContent = "পণ্য সম্পাদনা"; 
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-async function removeProduct(id) {
-  if(!confirm("এই পণ্য মুছে ফেলবেন?")) return;
-  await supabase.from('products').delete().eq('id', id);
-  loadAll();
-}
-
-$("resetProduct").onclick = resetProductForm;
-
-$("productForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  const id = $("productId").value;
-  const data = {
-    title: $("pName").value.trim(),
-    price: Number($("pPrice").value),
-    category: $("pCategory").value.trim() || "General",
-    description: $("pDescription").value.trim(),
-    image_url: $("pImage").value.trim()
-  };
-  
-  if(id) {
-    await supabase.from('products').update(data).eq('id', id);
-  } else {
-    await supabase.from('products').insert([data]);
-  }
-  resetProductForm(); 
-  loadAll();
-  message("পণ্য সফলভাবে সংরক্ষিত হয়েছে।");
 });
 
-$("refreshButton").onclick = () => loadAll();
-loadAll();
+
+/* লগআউট */
+
+$("logoutBtn").addEventListener("click", async () => {
+  await db.auth.signOut();
+  location.reload();
+});
+
+
+/* ট্যাব */
+
+document.querySelectorAll("[data-tab]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-tab]").forEach(tab => {
+      tab.classList.toggle("active", tab === button);
+    });
+
+    ["productsTab","ordersTab","settingsTab"].forEach(id => {
+      $(id).classList.toggle("hidden", id !== button.dataset.tab);
+    });
+  });
+});
+
+
+/* ছবি URL তালিকা */
+
+function getImages(product) {
+  const raw = product.image_urls || product.image_url || "";
+
+  return String(raw)
+    .split(/\n|,/)
+    .map(url => url.trim())
+    .filter(Boolean);
+}
+
+
+/* পণ্য লোড */
+
+async function loadProducts() {
+  const { data, error } = await db
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    $("productRows").innerHTML =
+      `<tr><td colspan="6">${escapeHTML(error.message)}</td></tr>`;
+    return;
+  }
+
+  products = data || [];
+
+  $("productCount").textContent = products.length;
+
+  $("productRows").innerHTML = products.map(product => {
+    const images = getImages(product);
+
+    return `
+      <tr>
+        <td>
+          ${images[0]
+            ? `<img class="thumb" src="${escapeHTML(images[0])}" alt="">`
+            : "—"}
+        </td>
+
+        <td>${escapeHTML(product.title || product.name)}</td>
+        <td>${money(product.price)}</td>
+        <td>${escapeHTML(product.stock ?? "—")}</td>
+        <td>${escapeHTML(product.category || "—")}</td>
+
+        <td>
+          <div class="actions">
+            <button class="secondary" data-edit="${escapeHTML(product.id)}">
+              এডিট
+            </button>
+
+            <button class="danger" data-delete="${escapeHTML(product.id)}">
+              ডিলিট
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join("") || '<tr><td colspan="6">কোনো পণ্য নেই।</td></tr>';
+
+  document.querySelectorAll("[data-edit]").forEach(button => {
+    button.onclick = () => {
+      const product = products.find(
+        item => String(item.id) === button.dataset.edit
+      );
+
+      if (product) editProduct(product);
+    };
+  });
+
+  document.querySelectorAll("[data-delete]").forEach(button => {
+    button.onclick = () => deleteProduct(button.dataset.delete);
+  });
+}
+
+
+/* পণ্য এডিট */
+
+function editProduct(product) {
+  const form = $("productForm");
+
+  form.elements.id.value = product.id;
+  form.elements.title.value = product.title || product.name || "";
+  form.elements.category.value = product.category || "অন্যান্য";
+  form.elements.price.value = product.price || 0;
+  form.elements.original_price.value = product.original_price || "";
+  form.elements.stock.value = product.stock ?? 0;
+  form.elements.sizes.value = product.sizes || "";
+  form.elements.colors.value = product.colors || "";
+  form.elements.description.value = product.description || "";
+
+  form.elements.active.checked = product.active !== false;
+  form.elements.is_featured.checked = !!product.is_featured;
+  form.elements.is_offer.checked = !!product.is_offer;
+
+  $("productMessage").textContent =
+    "এডিট মোড চালু হয়েছে।";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+/* ফর্ম পরিষ্কার */
+
+$("clearProduct").addEventListener("click", () => {
+  $("productForm").reset();
+
+  $("productForm").elements.id.value = "";
+  $("productForm").elements.stock.value = 10;
+  $("productForm").elements.active.checked = true;
+
+  $("productMessage").textContent = "";
+});
+
+
+/* Storage-এ ছবি আপলোড */
+
+async function uploadImages(files, folder) {
+  const urls = [];
+
+  for (const file of files) {
+    if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+      throw new Error("শুধু JPG, PNG বা WebP ছবি আপলোড করুন।");
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      throw new Error("প্রতিটি ছবি সর্বোচ্চ ৫ MB হতে পারবে।");
+    }
+
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+    const path =
+      folder + "/" + Date.now() + "_" +
+      crypto.randomUUID() + "_" + safeName;
+
+    const { error } = await db.storage
+      .from("product-images")
+      .upload(path, file, {
+        contentType: file.type,
+        upsert: false
+      });
+
+    if (error) throw error;
+
+    const { data } = db.storage
+      .from("product-images")
+      .getPublicUrl(path);
+
+    urls.push(data.publicUrl);
+  }
+
+  return urls;
+}
+
+
+/* পণ্য সেভ */
+
+$("productForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const fd = new FormData(form);
+
+  $("saveProduct").disabled = true;
+  $("productMessage").textContent = "পণ্য সেভ হচ্ছে...";
+
+  try {
+    const id = fd.get("id");
+
+    const existing = id
+      ? products.find(item => String(item.id) === String(id))
+      : null;
+
+    const selectedFiles = [...form.elements.images.files];
+
+    const newImages = selectedFiles.length
+      ? await uploadImages(selectedFiles, "products")
+      : [];
+
+    const previousImages = existing
+      ? getImages(existing)
+      : [];
+
+    const allImages = [...previousImages, ...newImages];
+
+    const payload = {
+      title: String(fd.get("title")).trim(),
+      price: Number(fd.get("price")),
+      original_price: fd.get("original_price")
+        ? Number(fd.get("original_price"))
+        : null,
+      stock: Number(fd.get("stock") || 0),
+      category: String(fd.get("category") || ""),
+      description: String(fd.get("description") || ""),
+      image_url: allImages.join("\n"),
+      image_urls: allImages.join("\n"),
+      sizes: String(fd.get("sizes") || ""),
+      colors: String(fd.get("colors") || ""),
+      active: form.elements.active.checked,
+      is_featured: form.elements.is_featured.checked,
+      is_offer: form.elements.is_offer.checked
+    };
+
+    const result = id
+      ? await db.from("products").update(payload).eq("id", id)
+      : await db.from("products").insert(payload);
+
+    if (result.error) throw result.error;
+
+    $("productMessage").textContent =
+      "পণ্য সফলভাবে সেভ হয়েছে।";
+
+    form.reset();
+    form.elements.id.value = "";
+    form.elements.stock.value = 10;
+    form.elements.active.checked = true;
+
+    await loadProducts();
+
+  } catch (error) {
+    console.error(error);
+
+    $("productMessage").textContent =
+      "পণ্য সেভ করা যায়নি: " + error.message;
+
+  } finally {
+    $("saveProduct").disabled = false;
+  }
+});
+
+
+/* পণ্য মুছে ফেলা */
+
+async function deleteProduct(id) {
+  if (!confirm("এই পণ্যটি মুছে ফেলতে চাও?")) return;
+
+  const { error } = await db
+    .from("products")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("পণ্য মুছতে সমস্যা হয়েছে: " + error.message);
+    return;
+  }
+
+  await loadProducts();
+}
+
+
+/* অর্ডার লোড */
+
+async function loadOrders() {
+  const { data, error } = await db
+    .from("orders")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    $("orderRows").innerHTML =
+      `<tr><td colspan="7">${escapeHTML(error.message)}</td></tr>`;
+    return;
+  }
+
+  orders = data || [];
+
+  $("orderCount").textContent = orders.length;
+
+  $("pendingCount").textContent = orders.filter(order =>
+    (order.status || "Pending") === "Pending"
+  ).length;
+
+  const completedStatuses = [
+    "Delivered",
+    "Completed",
+    "সম্পন্ন",
+    "ডেলিভারি সম্পন্ন"
+  ];
+
+  const sales = orders
+    .filter(order => completedStatuses.includes(order.status))
+    .reduce((sum, order) =>
+      sum + Number(order.total_price || 0), 0
+    );
+
+  $("salesCount").textContent = money(sales);
+
+  $("orderRows").innerHTML = orders.map(order => `
+    <tr>
+      <td>
+        #${escapeHTML(order.id)}
+        <br>
+        <span class="muted">
+          ${escapeHTML(order.created_at
+            ? new Date(order.created_at).toLocaleString("bn-BD")
+            : "")}
+        </span>
+      </td>
+
+      <td>
+        ${escapeHTML(order.customer_name)}
+        <br>${escapeHTML(order.customer_phone)}
+        <br>${escapeHTML(order.customer_address || "")}
+      </td>
+
+      <td>
+        ${escapeHTML(order.product_name)}
+        <br>পরিমাণ: ${escapeHTML(order.quantity || 1)}
+      </td>
+
+      <td>${money(order.total_price)}</td>
+
+      <td>
+        ${escapeHTML(order.payment_method || "COD")}
+        <br>
+        ${escapeHTML(order.transaction_id || "")}
+      </td>
+
+      <td>
+        <select data-status="${escapeHTML(order.id)}">
+          ${[
+            "Pending",
+            "Confirmed",
+            "Processing",
+            "Shipped",
+            "Delivered",
+            "Cancelled"
+          ].map(status => `
+            <option
+              value="${status}"
+              ${String(order.status || "Pending") === status
+                ? "selected"
+                : ""}>
+              ${status}
+            </option>
+          `).join("")}
+        </select>
+      </td>
+
+      <td>
+        <button
+          class="primary"
+          data-save-order="${escapeHTML(order.id)}">
+          সেভ
+        </button>
+      </td>
+    </tr>
+  `).join("") || '<tr><td colspan="7">এখনো অর্ডার নেই।</td></tr>';
+
+  document.querySelectorAll("[data-save-order]").forEach(button => {
+    button.onclick = async () => {
+      const id = button.dataset.saveOrder;
+
+      const status = document.querySelector(
+        `[data-status="${id}"]`
+      ).value;
+
+      const { error } = await db
+        .from("orders")
+        .update({ status })
+        .eq("id", id);
+
+      $("ordersMessage").textContent = error
+        ? "স্ট্যাটাস সেভ হয়নি: " + error.message
+        : "অর্ডারের স্ট্যাটাস সেভ হয়েছে।";
+
+      if (!error) await loadOrders();
+    };
+  });
+}
+
+
+$("refreshOrders").addEventListener("click", loadOrders);
+
+
+/* ওয়েবসাইট সেটিংস লোড */
+
+async function loadSettings() {
+  const { data, error } = await db
+    .from("site_settings")
+    .select("*")
+    .eq("id", 1)
+    .maybeSingle();
+
+  if (error) {
+    $("settingsMessage").textContent =
+      "সেটিংস লোড হয়নি। site_settings টেবিল পরীক্ষা করুন।";
+    return;
+  }
+
+  settings = data || {};
+
+  const form = $("settingsForm");
+
+  [
+    "site_name",
+    "banner_title",
+    "banner_text",
+    "whatsapp_url",
+    "telegram_url",
+    "imo_url",
+    "facebook_url"
+  ].forEach(key => {
+    form.elements[key].value = settings[key] || "";
+  });
+}
+
+
+/* ওয়েবসাইট সেটিংস সেভ */
+
+$("settingsForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const fd = new FormData(form);
+
+  $("saveSettings").disabled = true;
+  $("settingsMessage").textContent = "সেটিংস সেভ হচ্ছে...";
+
+  try {
+    const payload = {
+      id: 1,
+      site_name: String(fd.get("site_name") || "সততা সপ"),
+      banner_title: String(fd.get("banner_title") || ""),
+      banner_text: String(fd.get("banner_text") || ""),
+      whatsapp_url: String(fd.get("whatsapp_url") || ""),
+      telegram_url: String(fd.get("telegram_url") || ""),
+      imo_url: String(fd.get("imo_url") || ""),
+      facebook_url: String(fd.get("facebook_url") || "")
+    };
+
+    if (form.elements.logo_file.files[0]) {
+      payload.logo_url = (
+        await uploadImages(
+          [form.elements.logo_file.files[0]],
+          "settings"
+        )
+      )[0];
+    } else if (settings.logo_url) {
+      payload.logo_url = settings.logo_url;
+    }
+
+    if (form.elements.banner_file.files[0]) {
+      payload.banner_url = (
+        await uploadImages(
+          [form.elements.banner_file.files[0]],
+          "settings"
+        )
+      )[0];
+    } else if (settings.banner_url) {
+      payload.banner_url = settings.banner_url;
+    }
+
+    const { error } = await db
+      .from("site_settings")
+      .upsert(payload, { onConflict: "id" });
+
+    if (error) throw error;
+
+    settings = payload;
+
+    $("settingsMessage").textContent =
+      "সেটিংস সেভ হয়েছে। User Panel রিফ্রেশ করে দেখো।";
+
+  } catch (error) {
+    console.error(error);
+
+    $("settingsMessage").textContent =
+      "সেটিংস সেভ করা যায়নি: " + error.message;
+
+  } finally {
+    $("saveSettings").disabled = false;
+  }
+});
+
+
+/* আগে থেকেই লগইন করা থাকলে সেশন যাচাই */
+
+async function restoreSession() {
+  const { data, error } = await db.auth.getSession();
+
+  if (error || !data.session) return;
+
+  try {
+    await checkAdmin(data.session.user);
+
+    $("loginSection").classList.add("hidden");
+    $("dashboard").classList.remove("hidden");
+    $("logoutBtn").classList.remove("hidden");
+
+    await Promise.all([
+      loadProducts(),
+      loadOrders(),
+      loadSettings()
+    ]);
+
+  } catch (error) {
+    $("loginMessage").textContent = error.message;
+  }
+}
+
+restoreSession();
 </script>
+
 </body>
 </html>
